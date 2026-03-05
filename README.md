@@ -1,4 +1,4 @@
-#  Bitespeed Backend Task: Identity Reconciliation
+#  Bitespeed Backend: Identity Reconciliation
 
 This project implements a robust Identity Reconciliation API designed to link multiple customer contact points (email and phone number) into a single consolidated identity. Built for high reliability and deployed using cloud infrastructure.
 
