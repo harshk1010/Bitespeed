@@ -38,7 +38,7 @@ Successful Response (200 OK):JSON{
   }
 }
 ```
- Identity Reconciliation LogicThe API follows a strict state-management flow to handle data linking:New Identity: If no matching email or phone exists, a new record is created with linkPrecedence: "primary".New Information: If a match is found but the incoming data contains a new email/phone, a new record is created with linkPrecedence: "secondary", linked to the existing primary ID.Identity Merging: If the incoming request contains an email from one primary identity and a phone number from another, the oldest record remains "primary," and the newer primary (and its descendants) are updated to "secondary."📊 Database SchemaTable Name: bitespeedColumnTypeDescriptionidINT (PK)Unique contact identifier.emailVARCHARCustomer email address.phoneNumberVARCHARCustomer phone number.linkedIdINTPointer to the primary contact ID.linkPrecedenceENUM"primary" or "secondary".createdAtDATETIMETimestamp of record creation.updatedAtDATETIMETimestamp of last modification.deletedAtDATETIMESoft delete timestamp.
+
  # Project Setup
 1. Prerequisites
 ```json
