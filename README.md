@@ -49,7 +49,7 @@ NEWAWSENDPOINT=your-database-endpoint
 AWSPASSWORD=your-database-password
 4. Database InitializationSQLCREATE DATABASE bitespeeddb;
 USE bitespeeddb;
-
+```json
 CREATE TABLE bitespeed (
   id INT AUTO_INCREMENT PRIMARY KEY,
   phoneNumber VARCHAR(20),
@@ -60,5 +60,6 @@ CREATE TABLE bitespeed (
   updatedAt DATETIME,
   deletedAt DATETIME
 );
+```
 5. Start the Server
 Bashnode app.js
