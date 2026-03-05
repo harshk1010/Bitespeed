@@ -40,15 +40,28 @@ Successful Response (200 OK):JSON{
 ```
  Identity Reconciliation LogicThe API follows a strict state-management flow to handle data linking:New Identity: If no matching email or phone exists, a new record is created with linkPrecedence: "primary".New Information: If a match is found but the incoming data contains a new email/phone, a new record is created with linkPrecedence: "secondary", linked to the existing primary ID.Identity Merging: If the incoming request contains an email from one primary identity and a phone number from another, the oldest record remains "primary," and the newer primary (and its descendants) are updated to "secondary."📊 Database SchemaTable Name: bitespeedColumnTypeDescriptionidINT (PK)Unique contact identifier.emailVARCHARCustomer email address.phoneNumberVARCHARCustomer phone number.linkedIdINTPointer to the primary contact ID.linkPrecedenceENUM"primary" or "secondary".createdAtDATETIMETimestamp of record creation.updatedAtDATETIMETimestamp of last modification.deletedAtDATETIMESoft delete timestamp.
  # Project Setup
-1. PrerequisitesNode.js installedAccess to a MySQL instance (Local or AWS RDS)
-2. InstallationBashnpm install
+1. Prerequisites
+```json
+Node.js installed
+Access to a MySQL instance (Local or AWS RDS)
+```
+2. Installation
+```json
+Bash npm install
+```
 3. Environment Configuration 
+```json
 Create a .env file in the root directory:
 Code snippetPORT=3000
 NEWAWSENDPOINT=your-database-endpoint
 AWSPASSWORD=your-database-password
-4. Database InitializationSQLCREATE DATABASE bitespeeddb;
+```
+4. Database 
+```json
+Initialization
+SQLCREATE DATABASE bitespeeddb;
 USE bitespeeddb;
+```
 ```json
 CREATE TABLE bitespeed (
   id INT AUTO_INCREMENT PRIMARY KEY,
@@ -62,4 +75,6 @@ CREATE TABLE bitespeed (
 );
 ```
 5. Start the Server
-Bashnode app.js
+```json
+Bash node app.js
+```
